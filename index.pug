@@ -1,0 +1,35 @@
+doctype html
+html(lang="cs")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Australianwines.eu
+    meta(name="description", content="This is an example of a meta description. This will often show up in search results.")
+    link(rel="preconnect", href="https://fonts.googleapis.com")
+    link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=nunito+sans:wght@200;700;900&display=swap", rel="stylesheet")
+    link(rel="stylesheet", href="assets/css/style.css")
+  body.center-wrap
+    - var n = 0;
+    - var pre = "0";
+    main.grid-wrap
+      .grid-info
+        .grid-info-inner
+          .grid-info-text Bližší informace na&nbsp;
+          a.grid-info-link(href="mailto:info@australianwines.eu") info@<wbr>australianwines.eu
+      .grid-header
+        .grid-header-top coming
+        .grid-header-middle soon
+        .grid-header-bottom 2021 
+      while n < 60
+        - n++
+        - if (n > 9) { pre = ""}
+        //- alternativní obrázky
+        //- webp se načítá cca 2* rychleji než jpg
+        //- a avif se načítají 2* rychleji než webp
+        //- nicméně podpora těchto formátů je různá, proto je třeba fallback přes picture 
+        picture.grid-picture
+          source(srcset="assets/img/avif/"+pre+n+".avif", type="image/avif")
+          source(srcset="assets/img/webp/"+pre+n+".webp", type="image/webp")
+          img.grid-img(src="assets/img/jpg/"+pre+n+".jpg", alt="Část koláže č."+n)
